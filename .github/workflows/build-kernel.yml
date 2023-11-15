@@ -46,11 +46,11 @@ jobs:
           #KernelSU support
           curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
      
-make V=1 ${args} ${{ env.KERNEL_TARGET }}_defconfig
+          make V=1 ${args} ${{ env.KERNEL_TARGET }}_defconfig
           make V=1 -j$(nproc) ${args}
      
-          make ${args} ${{ env.KERNEL_TARGET }}_defconfig
-          make -j$(($(getconf _NPROCESSORS_ONLN) * 2)) ${args}
+          # make ${args} ${{ env.KERNEL_TARGET }}_defconfig
+          # make -j$(($(getconf _NPROCESSORS_ONLN) * 2)) ${args}
 
       - name: Package kernel
         run: |
